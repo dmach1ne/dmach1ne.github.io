@@ -1,0 +1,168 @@
+\documentclass[10pt,a4paper]{article}
+
+% --- 패키지 로드 ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+% --- 전체 줄 간격 ---
+\linespread{1.1}
+
+% --- URL 스타일 ---
+\hypersetup{colorlinks=true, urlcolor=blue}
+
+% --- 섹션 스타일 ---
+\titleformat{\section}{
+  \vspace{0pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-2pt}]
+
+% --- [간격 및 여백 최적화] 리스트 설정 ---
+\setlist[itemize]{
+    itemsep=6pt,      % 항목(itemize 내의 \item) 간의 기본 간격
+    parsep=0pt,
+    topsep=0pt,
+    partopsep=0pt,
+    leftmargin=0.15in, 
+    rightmargin=0pt,
+    label={},
+    labelsep=0pt
+}
+
+% --- [명령어 재정의] 수동 vspace 제거를 위한 최적화 ---
+
+\newcommand{\resumeItemList}[1]{
+  \item[] \leavevmode 
+  \begin{tabular*}{\linewidth}{@{}l@{}}
+     {#1} \\
+  \end{tabular*}\vspace{-5pt}
+}
+
+% 1. 헤딩 명령어: 하단 여백을 내부적으로 조정
+\newcommand{\resumeHeading}[2]{
+  \item[] \leavevmode \normalsize
+  \begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & #2 \\
+  \end{tabular*}\vspace{-5pt} 
+}
+
+\newcommand{\resumeCourse}[1]{
+  \item[] \leavevmode \small
+  \begin{tabular*}{\linewidth}{@{}l@{}}
+    {#1} \\
+  \end{tabular*}\vspace{-5pt}
+}
+
+% 2. 하부 상세 항목: 들여쓰기를 유지하며 하단 여백 조정
+% --- [수정된 명령어] 헤딩보다 안쪽으로 들여쓰기 + 줄바꿈 정렬 유지 ---
+\newcommand{\resumeSubItem}[1]{
+  \item[] 
+  \begin{itemize}[leftmargin=0.15in, label={}, nosep]
+    \item \small{#1}
+  \end{itemize}
+  \vspace{-5pt} % 항목 간 간격 조절
+}
+
+\newcommand{\resumePublication}[1]{
+  \item[] \small{#1} \vspace{-5pt}
+}
+
+\begin{document}
+
+% --- 헤더 ---
+\begin{center}
+    {\Huge  \textbf{SUNGJAE AHN}} \\ \vspace{6pt}
+    \small 
+    \href{mailto:danielahn010@khu.ac.kr}{danielahn010@khu.ac.kr} $|$ 
+    \href{https://github.com/dmach1ne}{github} $|$
+    \href{https://dmach1ne.github.io}{webpage}
+    \vspace{4pt}
+\end{center}
+% --- Research Interest ---
+\section{Research Interest}
+\begin{itemize}
+    \item[] \small 
+    I believe that achieving Artificial General Intelligence (AGI) requires learning paradigms that enable agents to adapt and improve through \href{https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf}{autonomous experience}, much like \textbf{Reinforcement Learning}. 
+    In this context, my primary research interest lies in \textbf{\href{https://arxiv.org/pdf/1912.05500}{meta-learning intrinsic reward}} functions that generalize across diverse environments, enabling agents to rapidly adapt to unseen tasks.
+\end{itemize}
+
+% --- Education ---
+\section{Education}
+\begin{itemize}
+    \resumeHeading{Kyung Hee University (KHU)}{Expected Graduation: Feb. 2027}
+    \resumeSubItem{{B.S. in Computer Science and Engineering}}
+    \vspace{-2pt}
+    \resumeSubItem{GPA : 4.05/4.3 (4.29/4.5)}
+\end{itemize}
+
+% --- Experience ---
+\section{Research Experience}
+\begin{itemize}
+    \resumeHeading{\href{https://airlab.khu.ac.kr/publication/}{AI \& Robotics Lab (AIR Lab)}, KHU}{Dec. 2025 -- Present}
+    \resumeSubItem{{Undergraduate Researcher (Advisor: Prof. Hyoseok Hwang)}}
+    \vspace{-2pt}
+    \resumeSubItem{\textbullet \
+    Demonstrated that temporal penalties induce spatial smoothness through off-policy transitions, eliminating the need for explicit spatial penalties.
+    }
+    \resumeSubItem{\textbullet \
+    Investigating self-distillation approach for preserving reasoning diversity of Large Language Models.
+    }
+\end{itemize}
+
+\section{Projects}
+\begin{itemize}
+    \resumeHeading{Enhanced \href{https://arxiv.org/abs/2601.20802}{Self-Distillation Policy Optimization}}{Spring 2026 -- Present}
+    \resumeSubItem{\textbullet \
+    Exploring maximum entropy regularization to expanded Top-K tokens to enhance exploration of the student.
+    }
+\end{itemize}
+\vspace{5pt}
+\begin{itemize}
+    \resumeHeading{\href{https://aifactory.space/task/9197/leaderboard}{Deepfake Detection Competition} (Held by NFS)}{Fall 2025}
+\resumeSubItem{\textbullet \ Ranked 33 out of 266 teams utilizing Dual Data Alignment for robust cross-domain forgery detection.}
+\resumeSubItem{\textbullet \ Leveraged Hydra and WandB to manage experimental configurations and ensure research reproducibility.}
+\vspace{-2pt}
+\end{itemize}
+
+% --- Activities ---
+\section{Activities}
+\begin{itemize}
+    \resumeHeading{CSE 304 Algorithms}{Spring, Fall 2025}
+    \resumeSubItem{SW-mentor at KHU}
+    \resumeHeading{KHUDA (KHU Data analysis and AI club) 7th}{Jan. 2025 - Jul. 2025}
+    \resumeSubItem{NLP Track, Developed RAG-based Chatbot}
+    \resumeHeading{\textnormal{Signal Intelligence}}{Feb. 2022 - Nov. 2023}
+    \resumeSubItem{Mandatory Military Service}
+\end{itemize}
+
+% --- Skills ---
+\section{Skills}
+\begin{itemize}[itemsep=2pt]
+    \resumeHeading{AI/ML : \textnormal{\small PyTorch, Gymnasium, Slurm}}{}
+    \vspace{-10pt}
+    \resumeHeading{English : \textnormal{\small TOEIC 970}}{}
+\end{itemize}
+
+% --- Awards ---
+\section{Awards}
+\begin{itemize}
+    \resumeHeading{Academic Excellence Scholarship, \textnormal{KHU}}{Fall 2025}
+    \resumeHeading{Academic Excellence Scholarship, \textnormal{KHU}}{Spring 2025}
+    \resumeHeading{Academic Excellence Scholarship, \textnormal{KHU}}{Fall 2024}
+    \resumeHeading{Academic Excellence Scholarship, \textnormal{KHU}}{Spring 2024}
+\end{itemize}
+
+\begin{comment}
+% --- Related Courses: 다른 항목들과 들여쓰기 통일 ---
+\section{RELATED COURSES}
+\begin{itemize}
+    \resumeCourse{Deep Learning, Machine Learning in Practice, Operation Research II, Big Data Mining, AI Programming}
+\end{itemize}
+\end{comment}
+
+\end{document}
