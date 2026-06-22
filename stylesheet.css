@@ -131,6 +131,21 @@ h2 {
   -webkit-transition: opacity .2s ease-in-out;
 }
 
+.project-thumb {
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.project-image-cell {
+  text-align: center;
+}
+
+.project-image-cell .one {
+  margin: 0 auto;
+}
+
 .fade {
   transition: opacity .2s ease-in-out;
   -moz-transition: opacity .2s ease-in-out;
@@ -139,6 +154,10 @@ h2 {
 
 span.highlight {
   background-color: #ffffd0;
+}
+
+.hidden-section {
+  display: none;
 }
 
 .colored-box {
@@ -230,5 +249,20 @@ span.highlight {
     height: 250px !important;
     margin: 0 auto !important;
     max-width: 90% !important;
+  }
+
+  .project-row,
+  .project-row td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .project-image-cell {
+    padding: 8px 16px 0 16px !important;
+  }
+
+  .project-info-cell {
+    padding: 8px 16px 16px 16px !important;
   }
 }

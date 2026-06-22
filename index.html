@@ -9,7 +9,7 @@
   <meta name="author" content="SungJae Ahn">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css?v=20260622">
 
 </head>
 
@@ -75,6 +75,12 @@
             style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
 
+              <tr class="hidden-section">
+                <td colspan="2" style="padding:16px;width:100%;vertical-align:middle">
+                  <h2>Publications</h2>
+                </td>
+              </tr>
+
               <!--
               <tr onmouseout="radmesh_stop()" onmouseover="radmesh_start()" bgcolor="#ffffd0">
                 <td style="padding:16px;width:20%;vertical-align:middle">
@@ -120,6 +126,37 @@
                 </td>
               </tr>
               -->
+
+              <tr>
+                <td colspan="2" style="padding:16px;width:100%;vertical-align:middle">
+                  <h2>Projects</h2>
+                </td>
+              </tr>
+
+              <tr class="project-row">
+                <td class="project-image-cell" style="padding:16px;width:20%;vertical-align:middle">
+                  <div class="one">
+                    <img class="project-thumb" src="images/reasoning_diversity_self_distillation.png"
+                      alt="Reasoning diversity project thumbnail">
+                  </div>
+                </td>
+                <td class="project-info-cell" style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="data/reasoning_diversity_self_distillation.pdf">
+                    <span class="papertitle">Analyzing Reasoning Diversity in Self-Distillation</span>
+                  </a>
+                  <br>
+                  <em>Advanced Deep Learning</em>, Spring 2026
+                  <br>
+                  <a href="data/reasoning_diversity_self_distillation.pdf">presentation</a>
+                  /
+                  <a href="data/reasoning_diversity_self_distillation_report_ko.pdf">report paper (Korean)</a>
+                  <p></p>
+                  <p>
+                    Studied how self-distillation losses affect reasoning diversity after RL post-training, analyzing
+                    different roles of forward and reverse KL in successful versus failed rollouts.
+                  </p>
+                </td>
+              </tr>
 
             </tbody>
           </table>
