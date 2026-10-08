@@ -216,6 +216,15 @@ span.highlight {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.local-preview .profile-img-div {
+  background-image: none !important;
+  background-color: #fff;
+}
+
+.local-preview .profile-pic-container a {
+  pointer-events: none;
+}
+
 @media screen and (max-width: 600px) {
   .profile-grid {
     display: flex;

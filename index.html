@@ -9,7 +9,13 @@
   <meta name="author" content="SungJae Ahn">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css?v=20260622">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css?v=20261008">
+  <script>
+    // Hide the portrait in local previews while keeping it visible on the published site.
+    if (location.protocol === 'file:' || ['localhost', '127.0.0.1', '::1'].includes(location.hostname)) {
+      document.documentElement.classList.add('local-preview');
+    }
+  </script>
 
 </head>
 
@@ -33,7 +39,7 @@
               </a>
             </div>
             <div class="profile-content">
-              <p>
+              <p data-editable="introduction">
                 I'm an undergraduate student at <a href="https://www.khu.ac.kr/eng/user/main/view.do">KyungHee
                   University</a> majoring in Computer Science and Engineering.
                 I'm an undergraduate researcher at KHU <a href="http://airlab.khu.ac.kr/">AIRLab</a>, advised by
@@ -57,11 +63,10 @@
               <tr>
                 <td style="padding:16px;width:100%;vertical-align:middle">
                   <h2>Research</h2>
-                  <p>
+                  <p data-editable="research">
                     I believe that achieving Artificial General Intelligence (AGI) requires learning
                     paradigms that enable agents to adapt and improve through
-                    <a
-                      href="https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf">autonomous
+                    <a href="https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf">autonomous
                       experience</a>, much like
                     <strong>Reinforcement Learning</strong>. In this context, my primary research interest lies in
                     <a href="https://arxiv.org/pdf/1912.05500"><strong>meta-learning intrinsic reward</strong></a> functions that generalize across diverse environments, enabling agents
@@ -150,16 +155,13 @@
                   <em>Advanced Deep Learning</em>, Spring 2026
                   <br>
                   <a href="data/reasoning_diversity_self_distillation.pdf">presentation</a>
-                  /
-                  <a href="data/reasoning_diversity_self_distillation_report_ko.pdf">report paper (Korean)</a>
                   <p></p>
-                  <p>
-                    Standard SDPO propagates a single successful rollout as supervision across rollouts, which can reinforce
-                    a narrow set of reasoning strategies. We explored whether feedback from failed rollouts can
-                    encourage more diverse strategies, and analyzed how KL divergence directions play different roles
-                    in failed and successful rollouts from an exploration-exploitation perspective.
-                    <br>
-                    Concurrent work by <a href="https://arxiv.org/abs/2606.26091">Nicolicioiu et al.</a> studied how on-policy self-distillation can reduce reasoning diversity in greater detail.
+                  <p data-editable="project">
+                    The recently proposed SDPO propagates a single successful rollout as supervision across rollouts, which explicitly reinforces
+                    <a href="https://arxiv.org/abs/2606.26091">a narrow set of reasoning strategies</a>.
+                    We demonstrated that utilizing only text feedback from failed rollouts can encourage more diverse (semantic) strategies.
+                    We also found that, together with SDPO's top-K approximation, the direction of KL divergence has different effects depending on the outcome.
+                    For example, when the student fails, the reverse KL used by SDPO provides a weaker learning signal than forward KL for selecting new words because the student assigns low probability to the relevant tokens.
                   </p>
                 </td>
               </tr>
