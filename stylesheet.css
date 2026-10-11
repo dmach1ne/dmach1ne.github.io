@@ -141,7 +141,7 @@ h2 {
 
 .project-thumb-panel {
   background-image: url('images/reasoning_diversity_self_distillation_v2.png');
-  background-size: 187.5% auto;
+  background-size: 230% auto;
   background-repeat: no-repeat;
 }
 
@@ -163,6 +163,10 @@ h2 {
   margin: 0 auto;
   width: 160px;
   height: 160px;
+}
+
+.project-image-cell .sdpo-thumb-container {
+  height: 200px;
 }
 
 .publication-image-cell .one {
