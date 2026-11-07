@@ -9,7 +9,7 @@
   <meta name="author" content="SungJae Ahn">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css?v=20261011-2">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css?v=20261107">
   <script>
     // Hide the portrait in local previews while keeping it visible on the published site.
     if (location.protocol === 'file:' || ['localhost', '127.0.0.1', '::1'].includes(location.hostname)) {
@@ -64,13 +64,8 @@
                 <td style="padding:16px;width:100%;vertical-align:middle">
                   <h2>Research</h2>
                   <p data-editable="research">
-                    I believe that achieving AGI requires learning
-                    paradigms that enable agents to adapt and improve through
-                    <a href="https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf">autonomous
-                      experience</a>, much like
-                    <strong>Reinforcement Learning (RL)</strong>.
-                    In particular, I am interested in <strong>Continual RL</strong> and <strong>Meta RL</strong>, which aim to enable agents to learn reusable knowledge from their histories and apply it to new environments, potentially improving the sample efficiency of RL algorithms.
-                    Recently, I have become interested in <a href="https://arxiv.org/pdf/1912.05500">learning intrinsic rewards online</a> to enable agents to explore rationally and adapt to changing environments.<br></p>
+                    My conception of a fully realized AI is an agent that, as it accumulates experience, becomes better at predicting the consequences of its actions, learns more quickly which actions are effective in achieving its goals, and becomes better at determining how to modify its own behavior or structure&mdash;all to adapt to a world bigger than itself. To this end, I am interested in <strong>(Continual) Reinforcement Learning</strong>, <strong>Exploration in RL</strong>, and <strong>Meta-learning for RL</strong>.
+                    Currently, I am interested in enabling agents to adapt to changing environments through exploration, which requires revisiting environmental components not visited for a long time and reasonably estimating which aspects may have changed.<br></p>
                 </td>
               </tr>
             </tbody>
@@ -82,6 +77,24 @@
               <tr>
                 <td colspan="2" style="padding:16px;width:100%;vertical-align:middle">
                   <h2>Publications</h2>
+                </td>
+              </tr>
+
+              <tr class="publication-row">
+                <td class="publication-image-cell" style="padding:16px;width:40%;vertical-align:middle">
+                  <a href="images/frnd-fig2-fig4.svg" aria-label="Enlarge FRND Figures 2 and 4">
+                    <img src="images/frnd-fig2-fig4.svg" alt="FRND Figure 2 above Figure 4: changing gridworld environments and exploration bonuses" width="570" height="442" style="display:block;width:100%;height:auto;margin:0 auto">
+                  </a>
+                </td>
+                <td class="publication-info-cell" style="padding:8px;width:60%;vertical-align:middle">
+                  <a href="data/FRND.pdf"><span class="papertitle">Re-exploration by Leveraging Forgetting in Random Network Distillation</span></a>
+                  <br>
+                  <strong>SungJae Ahn</strong>, Hyoseok Hwang
+                  <br>
+                  <em>Submitted to Korea Software Congress 2026</em>
+                  <br>
+                  <a href="data/FRND.pdf">paper</a>
+                  <p class="publication-description">In this work, we show that catastrophic forgetting can be used to represent uncertainty about potentially changed regions when properly guided within a suitable neural network. Concretely, we guide forgetting by regularizing the RND predictor toward its initial parameters, autonomously inducing optimism for long-unvisited entries without state sampling or explicit recency tracking.</p>
                 </td>
               </tr>
 
@@ -187,11 +200,8 @@
               <tr class="project-row">
                 <td class="project-image-cell" style="padding:16px;width:20%;vertical-align:middle">
                   <div class="one sdpo-thumb-container">
-                    <a href="images/reasoning_diversity_self_distillation_v2.png">
-                      <div class="project-thumb" role="img" aria-label="KL divergence trends for successful and failed rollouts">
-                        <div class="project-thumb-panel project-thumb-success"></div>
-                        <div class="project-thumb-panel project-thumb-failure"></div>
-                      </div>
+                    <a href="images/sdpo-trimmed.svg">
+                      <img src="images/sdpo-trimmed.svg" width="670" height="753" alt="KL divergence trends for successful and failed rollouts" style="display:block;width:100%;height:auto">
                     </a>
                   </div>
                 </td>

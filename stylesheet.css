@@ -166,7 +166,7 @@ h2 {
 }
 
 .project-image-cell .sdpo-thumb-container {
-  height: 200px;
+  height: auto;
 }
 
 .publication-image-cell .one {

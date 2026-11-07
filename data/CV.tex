@@ -1,8 +1,20 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 
 % --- 패키지 로드 ---
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
+% Use 11 PDF points for the normal text size.
+\makeatletter
+\renewcommand{\@xipt}{11.04125}
+\makeatother
+\let\cvOriginalNormalSize\normalsize
+\renewcommand{\normalsize}{\cvOriginalNormalSize\fontsize{11bp}{13bp}\selectfont}
+\let\cvOriginalSmall\small
+\renewcommand{\small}{\cvOriginalSmall\fontsize{10bp}{13bp}\selectfont}
+\newcommand{\cvDetailSize}{\small\fontsize{9.5bp}{13bp}\selectfont}
+% Fixed entry-edge dimensions keep adjacent entry baselines 18bp apart.
+\newcommand{\cvEntryStrut}{\rule[-3bp]{0pt}{12bp}}
+\setlength{\lineskip}{1bp}
 \usepackage[margin=0.7in]{geometry}
 \usepackage{hyperref}
 \usepackage{enumitem}
@@ -12,23 +24,23 @@
 \usepackage{verbatim}
 
 % --- 전체 줄 간격 ---
-\linespread{1.1}
+\linespread{1.0}
 
 % --- URL 스타일 ---
 \hypersetup{colorlinks=true, urlcolor=blue}
 
 % --- 섹션 스타일 ---
 \titleformat{\section}{
-  \vspace{0pt}\scshape\raggedright\large\bfseries
+  \vspace{0pt}\raggedright\normalsize\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-2pt}]
 
 % --- [간격 및 여백 최적화] 리스트 설정 ---
 \setlist[itemize]{
-    itemsep=6pt,      % 항목(itemize 내의 \item) 간의 기본 간격
+    itemsep=5bp,      % 항목(itemize 내의 \item) 간의 기본 간격
     parsep=0pt,
     topsep=0pt,
     partopsep=0pt,
-    leftmargin=0.15in, 
+    leftmargin=0pt,
     rightmargin=0pt,
     label={},
     labelsep=0pt
@@ -37,7 +49,7 @@
 % --- [명령어 재정의] 수동 vspace 제거를 위한 최적화 ---
 
 \newcommand{\resumeItemList}[1]{
-  \item[] \leavevmode 
+  \item[] \leavevmode
   \begin{tabular*}{\linewidth}{@{}l@{}}
      {#1} \\
   \end{tabular*}\vspace{-5pt}
@@ -48,7 +60,7 @@
   \item[] \leavevmode \normalsize
   \begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
     \textbf{#1} & #2 \\
-  \end{tabular*}\vspace{-5pt} 
+  \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeCourse}[1]{
@@ -61,92 +73,140 @@
 % 2. 하부 상세 항목: 들여쓰기를 유지하며 하단 여백 조정
 % --- [수정된 명령어] 헤딩보다 안쪽으로 들여쓰기 + 줄바꿈 정렬 유지 ---
 \newcommand{\resumeSubItem}[1]{
-  \item[] 
-  \begin{itemize}[leftmargin=0.15in, label={}, nosep]
-    \item \small{#1}
+  \item[]
+  \begin{itemize}[leftmargin=0pt, label={}, nosep]
+    \item \cvDetailSize{#1}
   \end{itemize}
   \vspace{-5pt} % 항목 간 간격 조절
 }
 
 \newcommand{\resumePublication}[1]{
-  \item[] \small{#1} \vspace{-5pt}
+  \item[] \begin{minipage}[t]{\linewidth}\normalsize\cvEntryStrut{#1}\cvEntryStrut\end{minipage}
 }
 
+% Keep research and project entries on a shared baseline grid.
+\newcommand{\cvEntryHeading}[2]{%
+  \makebox[\linewidth][l]{\cvEntryStrut\textbf{#1}\hfill #2}\par
+}
+\newcommand{\cvEntryBullet}[1]{%
+  \vskip\dimexpr13bp-12pt\relax
+  {\cvDetailSize\fontsize{9.5bp}{12pt}\selectfont
+   \leftskip=24bp\relax\noindent\llap{\textbullet\hspace{9bp}}#1\cvEntryStrut\par}%
+}
 \begin{document}
 
 % --- 헤더 ---
 \begin{center}
-    {\Huge  \textbf{SUNGJAE AHN}} \\ \vspace{6pt}
-    \small 
-    \href{mailto:danielahn010@khu.ac.kr}{danielahn010@khu.ac.kr} $|$ 
+    {\fontsize{17bp}{21bp}\selectfont \textbf{SUNGJAE AHN}} \\ \vspace{6pt}
+    \normalsize
+    \href{mailto:danielahn010@khu.ac.kr}{danielahn010@khu.ac.kr} $|$
     \href{https://github.com/dmach1ne}{github} $|$
     \href{https://dmach1ne.github.io}{webpage}
     \vspace{4pt}
 \end{center}
 % --- Education ---
-\section{Education}
+\section{RESEARCH INTERESTS}
+\begin{minipage}[t]{\linewidth}
+    \cvDetailSize
+My conception of a fully realized AI is an agent that, as it accumulates experience, becomes better at predicting the consequences of its actions, learns more quickly which actions are effective in achieving its goals, and becomes better at determining how to modify its own behavior or structure---all to adapt to a world bigger than itself.  To this end, I am interested in \textbf{(Continual) Reinforcement Learning}, \textbf{Exploration in RL}, and \textbf{Meta-learning for RL}.
+\end{minipage}
+\section{EDUCATION}
 \begin{itemize}
-    \resumeHeading{Kyung Hee University (KHU)}{Expected Graduation: Aug. 2027}
-    \resumeSubItem{{B.S. in Computer Science and Engineering}}
-    \vspace{-2pt}
-    \resumeSubItem{\fontsize{8pt}{9.6pt}\selectfont GPA: 4.31/4.5 (3.88/4.0); Upper-division GPA: 4.48/4.5 (4.0/4.0)}
+    \item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{Kyung Hee University (KHU)}{Expected Graduation: Aug. 2027}
+    {\cvDetailSize\noindent B.S. in Computer Science and Engineering\par}
+    {\fontsize{9bp}{13bp}\selectfont
+      \noindent GPA: 4.31/4.5 (3.88/4.0); Upper-division: 4.48/4.5 (4.0/4.0)\par
+      \noindent Leave of absence for military service: Feb. 2022 -- Nov. 2023\par
+    }
+\end{minipage}
 \end{itemize}
 
 % --- Experience ---
-\section{Research Experience}
+\section{RESEARCH EXPERIENCE}
 \begin{itemize}
-    \resumeHeading{\href{https://airlab.khu.ac.kr/publication/}{AI \& Robotics Lab (AIR Lab)}, KHU}{Dec. 2025 -- Present}
-    \item[] \small Undergraduate Researcher (Advisor: Prof. Hyoseok Hwang)
-    \vspace{-5pt}
-    \resumeSubItem{\textbullet \
-    Demonstrated that temporal action-smoothness penalties induce spatial smoothness through next-state distributions, enabling more stable deployment of DRL policies in robotics without explicit spatial penalties.
+    \item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{\href{https://airlab.khu.ac.kr/publication/}{AI \& Robotics Lab}, KHU}{Dec. 2025 -- Present}
+    \noindent Undergraduate Researcher (Advisor: Hyoseok Hwang)\par
+    \cvEntryBullet{Demonstrated that temporal regularization alone can induce spatial smoothness through shared next states, allowing policies to retain performance by avoiding explicit spatial regularization.
     }
-    \resumeSubItem{\textbullet \
-    Exploring self-distillation methods for robust and reliable unlearning in Large Language Models.
+    \cvEntryBullet{Demonstrated that catastrophic forgetting in the RND predictor network can be harnessed to promote re-exploration of long-unvisited states, allowing effective adaptation to changing environments.}
+\end{minipage}
+\end{itemize}
+
+\section{PUBLICATIONS}
+\begin{itemize}
+    \resumePublication{%
+      \href{https://dmach1ne.github.io/data/FRND.pdf}{Re-exploration by Leveraging Forgetting in Random Network Distillation} \\
+      {\small \textbf{SungJae Ahn}, Hyoseok Hwang} \\
+      {\small \textit{Submitted to Korea Software Congress 2026}}%
+    }
+    \resumePublication{%
+      \href{https://arxiv.org/abs/2610.07910}{Revisiting Temporal Regularization for Smooth Control in Deep Reinforcement Learning} \\
+      {\small \textbf{SungJae Ahn}, Jeong Woon Lee, Kyoleen Kwak, and Hyoseok Hwang} \\
+      {\small \textit{Submitted to ICRA 2027}}%
     }
 \end{itemize}
 
-\section{Projects}
+\section{PROJECTS}
 \begin{itemize}
-    \resumeHeading{Analyzing Reasoning Diversity in Self-Distillation}{Spring 2026}
-    \resumeSubItem{\textbullet \
-    Leveraged feedback from failed rollouts to encourage diverse reasoning strategies in self-distillation.
+    \item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{\href{https://airlab.khu.ac.kr/project/}{Mental Model Research for Robot Learning and Reasoning}}{Present}
+    {\small\noindent\textit{Lab project with \href{https://www.kist.re.kr/eng/index.do}{Korea Institute of Science and Technology (KIST)}}\par}
+    \cvEntryBullet{Trained and evaluated $\pi_{0.5}$ and several memory-augmented VLA models on tasks that include long-horizon manipulation and occlusion.}
+    \cvEntryBullet{Investigating the use of privileged graphs during training to ground VLA models' memory updates in changes to objects and non-object elements in video.}
+    \end{minipage}
+\item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{Analyzing Reasoning Diversity in Self-Distillation}{Spring 2026}
+    {\small\noindent\textit{Course project in Advanced Deep Learning}\par}
+    \cvEntryBullet{Demonstrated that leveraging feedback from failed rollouts can encourage diverse reasoning strategies in self-distillation policy optimization.
     }
-    \resumeSubItem{\textbullet \
-    Analyzed distinct roles of KL divergence directions in failed and successful rollouts from an exploration-exploitation perspective.
+    \cvEntryBullet{Analyzed the distinct roles of KL divergence directions in failed and successful rollouts by relating their mode-covering and mode-seeking behavior to exploration and exploitation.
     }
-\end{itemize}
-\vspace{5pt}
-\begin{itemize}
-    \resumeHeading{\href{https://aifactory.space/task/9197/leaderboard}{Deepfake Detection Competition} (Held by NFS)}{Fall 2025}
-\resumeSubItem{\textbullet \ Ranked 33 out of 266 teams utilizing Dual Data Alignment for robust cross-domain forgery detection.}
-\resumeSubItem{\textbullet \ Managed image preprocessing configurations with Hydra and used WandB to monitor experiments and link image datasets to result artifacts.}
+    \end{minipage}
+\item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{\href{https://aifactory.space/task/9197/leaderboard}{Deepfake Detection Competition}}{Fall 2025}
+    {\small\noindent\textit{Held by National Forensic Service}\par}
+\cvEntryBullet{Ranked 33 out of 266 teams utilizing Dual Data Alignment for robust cross-domain forgery detection.}
+\cvEntryBullet{Managed experiment configurations with Hydra and used W\&B to track how dataset selection and preprocessing choices led to each training run.}
 \vspace{-2pt}
+\end{minipage}
 \end{itemize}
 
 % --- Activities ---
-\section{Activities}
+\section{ACTIVITIES}
 \begin{itemize}
-    \resumeHeading{SW mentor: AI 3001 Advanced Deep Learning}{Present}
-    \resumeSubItem{Authoring course exercises for the \href{https://github.com/AI3001-Advanced-Deep-Learning/adl-course-docker}{course repository}.}
-    \resumeHeading{SW mentor: CSE 304 Algorithms}{Spring, Fall 2025}
-    \resumeSubItem{Curated LeetCode problems for course exercises and supported students through online Q\&A.}
-    \resumeHeading{KHUDA (KHU Data analysis and AI club) 7th}{Jan. 2025 - Jul. 2025}
-    \resumeSubItem{Built a legal-domain RAG chatbot over Korean legal cases using Chroma vector search, Korean sentence embeddings, and MMR-based retrieval.}
-    \resumeHeading{\textnormal{Signal Intelligence}}{Feb. 2022 - Nov. 2023}
-    \resumeSubItem{Mandatory Military Service}
+    \item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{SW Mentor: \href{https://emil.khu.ac.kr/teaching/advanced-deep-learning}{AI 3001 Advanced Deep Learning}}{Present}
+    \cvEntryBullet{Designed programming assignments on core Transformer components.}
+    \end{minipage}
+\item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{SW Mentor: CSE 304 Algorithms}{Spring, Fall 2025}
+    \cvEntryBullet{Curated LeetCode problems for course exercises and supported students through online Q\&A.}
+    \end{minipage}
+\item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{KHUDA (KHU Data analysis and AI club) 7th}{Jan. 2025 - Jul. 2025}
+    \cvEntryBullet{Built a legal-domain RAG chatbot to improve public access to Korean legal information, using Chroma vector search, Korean sentence embeddings, and MMR-based retrieval.}
+    \end{minipage}
+\item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{\textnormal{Signals Intelligence at Defense Security Agency}}{Feb. 2022 - Nov. 2023}
+    \cvEntryBullet{Received awards for graduating first in my class (from a Major General) and identifying a previously unknown digital signal (from a Brigadier General).}
+\end{minipage}
 \end{itemize}
 
 % --- Skills ---
-\section{Skills}
-\begin{itemize}[itemsep=2pt]
-    \resumeHeading{AI/ML : \textnormal{\small PyTorch, Gymnasium, Slurm}}{}
-    \vspace{-10pt}
-    \resumeHeading{English : \textnormal{\small TOEFL 5.5 (110)}}{}
+\section{SKILLS}
+\begin{itemize}
+    \item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{AI/ML : \textnormal{\cvDetailSize PyTorch, JAX, Gymnasium, Isaac Lab, Slurm}}{}
+    \end{minipage}
+\item[]\begin{minipage}[t]{\linewidth}
+    \cvEntryHeading{English : \textnormal{\cvDetailSize TOEFL 5.5 (110)}}{}
+\end{minipage}
 \end{itemize}
 
 % --- Awards ---
-\section{Awards}
+\section{AWARDS}
 \begin{itemize}
     \resumeHeading{Academic Excellence Scholarship, \textnormal{KHU}}{Fall 2024 - Fall 2026}
 \end{itemize}
